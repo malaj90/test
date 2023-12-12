@@ -15,3 +15,18 @@ trait IContract<TContractState> {
    fn get_token_supply(self: @TContractState) -> felt252;
 }
 
+mod Contract {
+    #[storage]
+    struct Storage {
+        token_supply: felt252,
+        decimals: u8
+    }
+
+    #[external(v0)]
+    impl Contract of super::IContract<ContractState> {
+        fn increase_token_supply(ref self: ContractState, amount: felt252) { ... }
+        fn increase_decimals(ref self: ContractState, amount: u8) { ... }
+        fn get_token_supply(self: @ContractState) -> felt252 { ... }
+    }
+}
+
