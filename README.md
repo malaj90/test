@@ -1,1 +1,2 @@
 test contract
+say hello
