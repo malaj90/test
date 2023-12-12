@@ -1,0 +1,17 @@
+#[starknet::contract]
+mod Contract {
+}
+
+#[storage]
+struct Storage {
+    token_supply: felt252,
+    decimals: u8
+}
+
+#[starknet::interface]
+trait IContract<TContractState> {
+   fn increase_token_supply(ref self: TContractState, amount: felt252);
+   fn increase_decimals(ref self: TContractState, amount: u8);
+   fn get_token_supply(self: @TContractState) -> felt252;
+}
+
