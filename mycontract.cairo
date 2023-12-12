@@ -4,9 +4,7 @@ mod HelloStarknet {
     use starknet::ContractAddress;
 
 
-    #[event]
-    fn Hello(from: ContractAddress, value: felt252) {}
-
+  
 
     #[external]
     fn Say_Hello(message: felt252) {
