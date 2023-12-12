@@ -30,3 +30,28 @@ mod Contract {
     }
 }
 
+let current_balance = self.balance.read();
+self.balance.write(current_balance + amount)
+
+fn increase_token_supply(ref self: ContractState, amount: felt252) { 
+    let current_token_supply = self.token_supply.read();
+    self.token_supply.write(current_token_supply + amount)
+}
+
+#[event]
+#[derive(Drop, starknet::Event)]
+enum Event {
+    TokenSupplyIncreased: TokenSupplyIncreased,
+    DecimalsIncreased: DecimalsIncreased
+}
+
+#[derive(Drop, starknet::Event)]
+struct TokenSupplyIncreased {
+    amount: felt252
+}
+
+#[derive(Drop, starknet::Event)]
+struct DecimalsIncreased {
+    amount: u8
+}
+
